@@ -3,6 +3,6 @@
 
 begin transaction;
 
-delete from movie_actor where movie_id = (select from movie where title = 'Avengers: Infinity War');
+delete from movie_actor where movie_id = (select movie_id from movie where title = 'Avengers: Infinity War');
 
-rollback;
+commit;
