@@ -44,7 +44,7 @@ public class AuctionService {
         //Replace the current return statement to return the array of Auctions.
         String currentBid = "?currentBid_lte=" + price;
         return restTemplate.getForObject(API_BASE_URL + currentBid, Auction[].class );
-    
+
     }
 
 }
