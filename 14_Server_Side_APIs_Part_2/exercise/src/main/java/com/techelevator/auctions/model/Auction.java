@@ -1,8 +1,9 @@
 package com.techelevator.auctions.model;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import javax.validation.constraints.*;
 
 public class Auction {
 
@@ -10,6 +11,7 @@ public class Auction {
     private String title;
     private String description;
     private String user;
+    @Positive(message = "The currentBid field should be greater than 0.")
     private double currentBid;
 
     public Auction() {
@@ -34,14 +36,17 @@ public class Auction {
         return id;
     }
 
+    @NotBlank(message="The title field should not be blank.")
     public String getTitle() {
         return title;
     }
 
+    @NotBlank(message="The description field should not be blank.")
     public String getDescription() {
         return description;
     }
 
+    @NotBlank(message="The user field should not be blank.")
     public String getUser() {
         return user;
     }
@@ -50,6 +55,7 @@ public class Auction {
         return currentBid;
     }
 
+    @Positive(message = "The currentBid field should be greater than 0.")
     public String currentBidToString() {
         return id + ": " + title + " | Current Bid: " + currentBid;
     }
